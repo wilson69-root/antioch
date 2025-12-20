@@ -53,13 +53,13 @@ export default function Header() {
     };
 
     const navItems = [
-        { id: 'home', label: 'Home' },
-        { id: 'about', label: 'About' },
-        { id: 'ministries', label: 'Ministries' },
-        { id: 'events', label: 'Events' },
-        { id: 'sermons', label: 'Sermons' },
-        { id: 'live', label: 'Live Streams' },
-        { id: 'contact', label: 'Contact' },
+        { id: 'home', label: 'Home', href: '/' },
+        { id: 'about', label: 'About', href: '/#about' },
+        { id: 'ministries', label: 'Ministries', href: '/ministries' },
+        { id: 'events', label: 'Events', href: '/#events' },
+        { id: 'sermons', label: 'Sermons', href: '/sermons' },
+        { id: 'live', label: 'Live Streams', href: '/#live' },
+        { id: 'contact', label: 'Contact', href: '/#contact' },
     ];
 
     return (
@@ -101,12 +101,20 @@ export default function Header() {
                         {navItems.map((item) => (
                             <li key={item.id}>
                                 <a
-                                    href={`#${item.id}`}
+                                    href={item.href}
                                     className={cn(
                                         "nav-link transition-smooth",
                                         activeHash === item.id && "nav-link-active"
                                     )}
-                                    onClick={(e) => scrollToSection(e, item.id)}
+                                    onClick={(e) => {
+                                        // Only prevent default and smooth scroll for hash links
+                                        if (item.href.startsWith('/#')) {
+                                            e.preventDefault();
+                                            const targetId = item.href.substring(2); // Remove /#
+                                            scrollToSection(e, targetId);
+                                        }
+                                        // For non-hash links, let default navigation occur
+                                    }}
                                 >
                                     {item.label}
                                 </a>
@@ -114,7 +122,7 @@ export default function Header() {
                         ))}
                         <li className="nav-donate-item">
                             <Button variant="default" size="sm" className="shadow-soft hover:shadow-medium transition-smooth" asChild>
-                                <a href="#donate" onClick={(e) => e.preventDefault()}>Giving</a>
+                                <a href="/give">Giving</a>
                             </Button>
                         </li>
                     </ul>

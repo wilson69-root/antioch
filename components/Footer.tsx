@@ -1,5 +1,6 @@
 'use client';
 
+import Link from "next/link";
 import { MapPin, Phone, Mail, Clock, Facebook, Twitter, Youtube, Instagram } from "lucide-react";
 
 export default function Footer() {
@@ -31,11 +32,12 @@ export default function Footer() {
                     <div className="footer-column">
                         <h3 className="text-white mb-5 text-xl">Quick Links</h3>
                         <ul className="space-y-3">
-                            <li><a href="#home" className="footer-link">Home</a></li>
-                            <li><a href="#about" className="footer-link">About Us</a></li>
-                            <li><a href="#ministries" className="footer-link">Ministries</a></li>
-                            <li><a href="#events" className="footer-link">Events</a></li>
-                            <li><a href="#sermons" className="footer-link">Sermons</a></li>
+                            <li><a href="/" className="footer-link">Home</a></li>
+                            <li><a href="/#about" className="footer-link">About Us</a></li>
+                            <li><Link href="/ministries" className="hover:text-white transition-colors">Ministries</Link></li>
+                            <li><Link href="/leadership" className="hover:text-white transition-colors">Leadership</Link></li>
+                            <li><Link href="/events" className="hover:text-white transition-colors">Events</Link></li>
+                            <li><a href="/sermons" className="footer-link">Sermons</a></li>
                         </ul>
                     </div>
                     <div className="footer-column">

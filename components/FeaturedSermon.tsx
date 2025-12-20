@@ -2,8 +2,13 @@
 
 import { Button } from "@/components/ui/button";
 import { PlayCircle } from "lucide-react";
+import { getFeaturedSermon } from "@/lib/data/sermons";
 
 export default function FeaturedSermon() {
+    const featuredSermon = getFeaturedSermon();
+
+    if (!featuredSermon) return null;
+
     return (
         <section id="sermons" className="bg-gradient-to-b from-white to-slate-50/50 py-20">
             <div className="container">
@@ -15,7 +20,7 @@ export default function FeaturedSermon() {
                     <div className="sermon-video-wrapper">
                         <div className="sermon-video">
                             <iframe
-                                src="https://www.youtube.com/embed/G0BppDtl3_Q"
+                                src={featuredSermon.videoUrl}
                                 frameBorder="0"
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                 allowFullScreen
@@ -28,15 +33,12 @@ export default function FeaturedSermon() {
                             <PlayCircle className="w-5 h-5 text-primary" />
                             <span className="text-sm font-semibold text-primary uppercase tracking-wide">Latest Message</span>
                         </div>
-                        <h3 className="text-3xl md:text-4xl mb-4">The Power of Prayer</h3>
+                        <h3 className="text-3xl md:text-4xl mb-4">{featuredSermon.title}</h3>
                         <p className="text-lg text-muted-foreground mb-4 leading-relaxed">
-                            In this sermon, we explore how prayer transforms our spiritual lives and draws us closer to God.
-                        </p>
-                        <p className="text-base text-muted-foreground mb-8 leading-relaxed">
-                            Discover practical insights on developing a consistent prayer life and experiencing God's presence in your daily walk.
+                            {featuredSermon.description}
                         </p>
                         <Button size="lg" className="shadow-medium hover:shadow-large transition-smooth" asChild>
-                            <a href="#" onClick={(e) => e.preventDefault()}>View All Sermons</a>
+                            <a href="/sermons">View All Sermons</a>
                         </Button>
                     </div>
                 </div>

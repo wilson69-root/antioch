@@ -3,31 +3,10 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Calendar, MapPin } from "lucide-react";
+import { getUpcomingEvents } from "@/lib/data/events";
 
 export default function Events() {
-    const events = [
-        {
-            title: "Family Fun Day",
-            date: "March 15, 2025",
-            img: "https://source.unsplash.com/random/600x400/?family,kenya",
-            desc: "Join us for a day filled with fun activities, games, and fellowship. Bring your family and enjoy a wonderful time together!",
-            action: "Details"
-        },
-        {
-            title: "Youth Camp 2025",
-            date: "April 10-14, 2025",
-            img: "https://source.unsplash.com/random/600x400/?youth,kenya",
-            desc: "Sign up for our annual youth camp where young hearts can grow in faith and friendship through engaging activities and teachings.",
-            action: "Sign Up"
-        },
-        {
-            title: "Community Service Day",
-            date: "May 1, 2025",
-            img: "https://source.unsplash.com/random/600x400/?service,kenya",
-            desc: "Join us as we reach out to vulnerable families in our community, providing assistance and support to those in need.",
-            action: "Volunteer"
-        }
-    ];
+    const events = getUpcomingEvents();
 
     return (
         <section id="events" className="py-20">
@@ -38,7 +17,7 @@ export default function Events() {
                 </div>
                 <div className="events-grid">
                     {events.map((evt, idx) => (
-                        <Card key={idx} className="event-card group overflow-hidden border-none shadow-soft hover:shadow-large transition-all duration-300">
+                        <Card key={evt.id} className="event-card group overflow-hidden border-none shadow-soft hover:shadow-large transition-all duration-300">
                             <div className="event-image-wrapper relative h-[220px] overflow-hidden">
                                 <img
                                     src={evt.img}

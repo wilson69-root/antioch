@@ -14,7 +14,7 @@ export default function Hero() {
                     <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
                         {/* Primary CTA */}
                         <Button size="lg" className="text-base px-8 py-6 shadow-large hover:shadow-xl transition-all duration-300 hover:-translate-y-0.5" asChild>
-                            <a href="#about">Visit Us</a>
+                            <a href="/new-here">Visit Us</a>
                         </Button>
                         {/* Secondary CTA */}
                         <Button
@@ -23,7 +23,7 @@ export default function Hero() {
                             className="text-base px-8 py-6 bg-white/10 backdrop-blur-sm border-2 border-white text-white hover:bg-white hover:text-primary transition-all duration-300 hover:-translate-y-0.5 shadow-medium"
                             asChild
                         >
-                            <a href="#live">Watch Live</a>
+                            <a href="/#live">Watch Live</a>
                         </Button>
                         {/* Tertiary CTA */}
                         <Button
@@ -32,7 +32,7 @@ export default function Hero() {
                             className="text-base px-8 py-6 text-white hover:bg-white/20 transition-smooth"
                             asChild
                         >
-                            <a href="#contact">Get In Touch</a>
+                            <a href="/#contact">Get In Touch</a>
                         </Button>
                     </div>
                 </div>
